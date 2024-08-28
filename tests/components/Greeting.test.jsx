@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import { cleanup, render, screen } from "@testing-library/react";
-import * as fc from "fast-check";
 import Greeting from "../../src/components/Greeting";
 
 describe("Greeting Component", () => {
@@ -16,12 +15,14 @@ describe("Greeting Component", () => {
     expect(element).toBeInTheDocument();
   });
 
-  it.skip("should handle random names correctly", () => {
+  it("should handle random names correctly", async() => {
+    const fc = await import("fast-check");
     fc.assert(
-      fc.property(fc.string(), (randomName) => {
+      fc.asyncProperty(fc.string(), (randomName) => {
         render(<Greeting name={randomName} />);
         const expectedText = randomName.trim() ? `Hello, ${randomName.trim()}!` : "Hello, World!";
         const element = screen.getByText(expectedText);
+        screen.debug();
         expect(element).toBeInTheDocument();
         // cleanup after each test
         cleanup();

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-export default function SimplePBT({ name = "Unknown" }) {
+export default function SimplePBT({ name }) {
   return (
     <div>
-      <h1>{name || 'Unknown'}</h1>
+      <h1>Name: {name}</h1>
     </div>
   );
 }

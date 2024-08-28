@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { render, screen, waitFor } from "@testing-library/react";
 import UserList from "../../src/components/UserList";
-import { vi } from "vitest"; // Import from vitest
 
 // Mock the fetch function
 globalThis.fetch = vi.fn();
